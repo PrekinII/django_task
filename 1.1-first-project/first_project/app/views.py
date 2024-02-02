@@ -36,9 +36,9 @@ def workdir_view(request):
     # по аналогии с `time_view`, напишите код,
     # который возвращает список файлов в рабочей 
     # директории
-    directory = 'C:/Users/rs1-t/OneDrive/Рабочий стол/dj-homeworks/1.1-first-project/first_project'
+    #directory = 'C:/Users/rs1-t/OneDrive/Рабочий стол/dj-homeworks/1.1-first-project/first_project'
     workdir_files = []
-    for data in listdir(path=directory):
+    for data in listdir():
         if os.path.isdir(data):
             workdir_files.append(listdir(data))
         else:

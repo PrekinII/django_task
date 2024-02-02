@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, reverse
 
 DATA = {
     'omlet': {
@@ -28,3 +29,11 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+def recipes(request, recipe_id):
+    recipe = DATA.get(recipe_id)
+    amount = int(request.GET.get('servings', 1))
+    new_recipe = {key: value * amount for key, value in recipe.items()}
+    context = {
+        'recipe': new_recipe
+    }
+    return render(request, 'calculator/index.html', context)
