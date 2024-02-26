@@ -34,12 +34,12 @@ POST {{baseUrl}}/measurements/
 Content-Type: application/json
 
 {
-  "sensor": 2,
-  "temperature": 15.0
+  "sensor": 1,
+  "temperature": 35.0
 }
 
 ###
 
 # получение информации по датчику
-GET {{baseUrl}}/sensors/2/
+GET {{baseUrl}}/sensors/1/
 Content-Type: application/json
