@@ -7,9 +7,10 @@ class AdvertisementFilter(filters.FilterSet):
     """Фильтры для объявлений."""
     created_at = filters.DateFromToRangeFilter()
     creator = filters.DjangoFilterBackend
+    status = filters.DjangoFilterBackend
 
     # TODO: задайте требуемые фильтры
 
     class Meta:
         model = Advertisement
-        fields = ['created_at', 'creator']
+        fields = ['created_at', 'creator', 'status']

@@ -8,22 +8,22 @@ Content-Type: application/json
 
 ###
 
-# создание объявления
+# создание объявления #user b209003097268429d166f641bd52d9d0e639c1d8
 POST {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token 4ca2e6fab5b681e75b9d2076c85320962fc9b85f
+Authorization: Token b209003097268429d166f641bd52d9d0e639c1d8
 
 {
-  "title": "ФУТБОЛКА",
+  "title": "НОУТ3",
   "description": "Срочно"
 }
 
 ###
 
 # попытка поменять объявление 4ca2e6fab5b681e75b9d2076c85320962fc9b85f
-PATCH {{baseUrl}}/advertisements/3/
+PATCH {{baseUrl}}/advertisements/35/
 Content-Type: application/json
-Authorization: Token 4ca2e6fab5b681e75b9d2076c85320962fc9b85f
+Authorization: Token b209003097268429d166f641bd52d9d0e639c1d8
 
 {
   "status": "CLOSED"
@@ -44,6 +44,7 @@ Content-Type: application/json
 ###
 
 # удаление объявления
-DELETE {{baseUrl}}/advertisements/32/
+DELETE {{baseUrl}}/advertisements/3/
 Content-Type: application/json
+Authorization: Token b209003097268429d166f641bd52d9d0e639c1d8
 

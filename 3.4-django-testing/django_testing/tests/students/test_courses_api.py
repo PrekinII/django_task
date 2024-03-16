@@ -111,3 +111,21 @@ def test_create_course_1(client):  # тест успешного создани�
     assert response.status_code == 201
     assert Course.objects.count() == count + 1
     assert data['name'] == 'Нетология'
+
+
+#test_courses_api.py
+@pytest.mark.parametrize(
+    'students_count,status_code', [
+    (19, 201),
+    (20, 201),
+    (21, 400)
+    ]
+)
+@pytest.mark.django_db
+def test_max_students_at_course(client, students_factory, students_count, status_code):
+    #Arrange
+    students = students_factory(_quantity=students_count)
+    student_ids = [stud.id for stud in students]
+    data = {"name": 'Test', "students": student_ids}
+    response = client.post('/api/v1/courses/', data=data)
+    assert response.status_code == status_code

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 
 from django_filters.rest_framework import FilterSet, DateFromToRangeFilter
-
+from rest_framework.exceptions import PermissionDenied
 
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ModelViewSet
@@ -17,17 +17,23 @@ class AdvertisementViewSet(ModelViewSet):
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
     filterset_class = AdvertisementFilter
+    permission_classes = (IsOwnerReadOnly, IsAuthenticatedOrReadOnly,)
 
     # TODO: настройте ViewSet, укажите атрибуты для кверисета,
     #   сериализаторов и фильтров
-    permission_classes = (IsAuthenticatedOrReadOnly, IsOwnerReadOnly,)
-    # def get_permissions(self):
+    #def get_permissions(self):
     #     """Получение прав для действий."""
     #     if self.action in ["create", "update", "partial_update", 'delete']: #, 'delete'
-    #         return [IsAuthenticated(), IsOwnerReadOnly()] #IsOwnerReadOnly() , IsAdminOrReadOnly()
+    #         return [IsOwnerReadOnly()]
     #     # elif self.action in ['delete']:
-    #     #     return [IsAdminOrReadOnly(),IsAuthenticatedOrReadOnly]
+    #     #     return [IsOwnerReadOnly]
     #     return []
+    # def get_permissions(self):
+    #     if self.action == ["create", "update", "partial_update", 'delete']:
+    #         permission_classes = [IsOwnerReadOnly]
+    #     else:
+    #         permission_classes = [IsAuthenticatedOrReadOnly]
+    #     return [permission() for permission in permission_classes]
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
