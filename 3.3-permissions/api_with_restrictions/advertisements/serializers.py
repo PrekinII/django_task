@@ -44,8 +44,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         # TODO: добавьте требуемую валидацию
 
         adv_count = Advertisement.objects.filter(status='OPEN', creator=self.context["request"].user).count()
-        print(adv_count)
 
-        if adv_count == 10:
+        if adv_count == 10 and data.get('status') != 'CLOSED':
             raise ValidationError('У Вас максимально допустимое количество открытых объявлений')
         return data

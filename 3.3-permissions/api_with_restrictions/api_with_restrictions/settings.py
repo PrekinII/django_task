@@ -86,11 +86,6 @@ REST_FRAMEWORK = {
         'anon': '10/minute',
         'user': '20/minute'
     },
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend',
-
-    ], #'django_filters.rest_framework.DateFromToRangeFilter'
-
 }
 
 WSGI_APPLICATION = 'api_with_restrictions.wsgi.application'
